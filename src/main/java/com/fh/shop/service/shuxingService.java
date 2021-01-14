@@ -8,4 +8,5 @@ public interface shuxingService {
     Map selectshuxingAll(Params params);
 
     void deleteshuxing(Integer id);
+
 }

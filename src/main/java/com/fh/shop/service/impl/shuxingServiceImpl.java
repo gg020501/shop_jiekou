@@ -38,4 +38,5 @@ public class shuxingServiceImpl implements shuxingService {
     public void deleteshuxing(Integer id) {
         shuxingdao.deleteshuxing(id);
     }
+
 }

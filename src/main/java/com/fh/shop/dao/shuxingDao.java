@@ -23,3 +23,4 @@ public interface shuxingDao {
     @Update("update dianshang_shuxing set isdel = 2 where id = #{id}")
     void deleteshuxing(Integer id);
 }
+

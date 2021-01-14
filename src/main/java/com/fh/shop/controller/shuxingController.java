@@ -34,4 +34,6 @@ public class shuxingController {
         map.put("message","success");
         return map;
     }
+
+
 }
