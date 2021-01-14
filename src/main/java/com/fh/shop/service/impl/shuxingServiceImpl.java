@@ -17,7 +17,6 @@ public class shuxingServiceImpl implements shuxingService {
 
     @Resource
     private shuxingDao shuxingdao;
-
     @Override
     public Map selectshuxingAll(Params params) {
         Map map = new HashMap();
@@ -33,5 +32,10 @@ public class shuxingServiceImpl implements shuxingService {
         map.put("message","success");
         map.put("data",shuxings);
         return map;
+    }
+
+    @Override
+    public void deleteshuxing(Integer id) {
+        shuxingdao.deleteshuxing(id);
     }
 }

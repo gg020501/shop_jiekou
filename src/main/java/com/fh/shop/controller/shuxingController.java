@@ -26,4 +26,12 @@ public class shuxingController {
         Map rs = shuxingservice.selectshuxingAll(params);
         return rs;
     }
+
+    @PostMapping("deleteshuxing")
+    public Map deleteshuxing(Integer id){
+        shuxingservice.deleteshuxing(id);
+        map.put("code",200);
+        map.put("message","success");
+        return map;
+    }
 }

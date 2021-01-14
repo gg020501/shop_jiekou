@@ -6,4 +6,6 @@ import java.util.Map;
 
 public interface shuxingService {
     Map selectshuxingAll(Params params);
+
+    void deleteshuxing(Integer id);
 }
