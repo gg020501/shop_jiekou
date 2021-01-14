@@ -44,6 +44,10 @@ public class shuxingServiceImpl implements shuxingService {
         shuxingdao.insertshuxing(shuxing);
     }
 
+    @Override
+    public Shuxing selectshuxingById(Integer id) {
+        return shuxingdao.selectshuxingById(id);
+    }
 
 
 }

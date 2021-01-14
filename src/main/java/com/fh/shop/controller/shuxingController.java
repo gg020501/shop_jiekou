@@ -48,6 +48,13 @@ public class shuxingController {
         return map;
     }
 
-
+    @PostMapping("selectshuxingById")
+    public Map selectshuxingById(Integer id){
+        Shuxing shuxing = shuxingservice.selectshuxingById(id);
+        map.put("code",200);
+        map.put("message","success");
+        map.put("data",shuxing);
+        return map;
+    }
 
 }

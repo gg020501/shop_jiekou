@@ -29,7 +29,10 @@ public interface shuxingDao {
     @Options(useGeneratedKeys = true,keyProperty = "id" ,keyColumn = "id")
     void insertshuxing(Shuxing shuxing);
 
+    @Select("select * from dianshang_shuxing where isdel = 1 and id = #{id}")
+    Shuxing selectshuxingById(Integer id);
+
+
 
 
 }
-
