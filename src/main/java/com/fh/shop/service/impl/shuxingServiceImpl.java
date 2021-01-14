@@ -49,5 +49,10 @@ public class shuxingServiceImpl implements shuxingService {
         return shuxingdao.selectshuxingById(id);
     }
 
+    @Override
+    public void updateshuxing(Shuxing shuxing) {
+        shuxingdao.updateshuxing(shuxing);
+    }
+
 
 }

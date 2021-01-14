@@ -32,7 +32,6 @@ public interface shuxingDao {
     @Select("select * from dianshang_shuxing where isdel = 1 and id = #{id}")
     Shuxing selectshuxingById(Integer id);
 
-
-
-
+    @Update("update dianshang_shuxing set name=#{name},namech=#{namech},typeid=#{typeid},type=#{type},issku=#{issku},updateDate=#{updateDate},author=#{author} where id = #{id} ")
+    void updateshuxing(Shuxing shuxing);
 }

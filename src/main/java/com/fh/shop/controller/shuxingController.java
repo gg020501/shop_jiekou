@@ -57,4 +57,16 @@ public class shuxingController {
         return map;
     }
 
+    @PostMapping("updateshuxing")
+    public Map updateshuxing(Shuxing shuxing){
+        shuxing.setUpdateDate(new Date());
+        shuxingservice.updateshuxing(shuxing);
+        map.put("code",200);
+        map.put("message","success");
+        return map;
+    }
+
+
+
+
 }
