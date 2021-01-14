@@ -28,5 +28,8 @@ public interface shuxingDao {
     @Insert("insert into dianshang_shuxing (name,namech,typeid,type,issku,isdel,createDate,updateDate,author)values (#{name},#{namech},#{typeid},#{type},#{issku},1,#{createDate},#{updateDate},#{author})")
     @Options(useGeneratedKeys = true,keyProperty = "id" ,keyColumn = "id")
     void insertshuxing(Shuxing shuxing);
+
+
+
 }
 

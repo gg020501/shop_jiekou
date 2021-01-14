@@ -11,4 +11,7 @@ public interface shuxingService {
     void deleteshuxing(Integer id);
 
     void insertshuxing(Shuxing shuxing);
+
+
+
 }
