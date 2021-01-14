@@ -39,4 +39,10 @@ public class shuxingServiceImpl implements shuxingService {
         shuxingdao.deleteshuxing(id);
     }
 
+    @Override
+    public void insertshuxing(Shuxing shuxing) {
+        shuxingdao.insertshuxing(shuxing);
+    }
+
+
 }

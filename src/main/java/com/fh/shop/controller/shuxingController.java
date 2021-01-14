@@ -1,5 +1,6 @@
 package com.fh.shop.controller;
 
+import com.fh.shop.entity.po.Shuxing;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.shuxingService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,5 +37,15 @@ public class shuxingController {
         return map;
     }
 
+    @PostMapping("insertshuxing")
+    public Map insertshuxing(Shuxing shuxing){
+        shuxing.setCreateDate(new Date());
+        shuxing.setUpdateDate(new Date());
+        shuxingservice.insertshuxing(shuxing);
+        map.put("code",200);
+        map.put("message","success");
+        map.put("dataId",shuxing.getId());
+        return map;
+    }
 
 }
