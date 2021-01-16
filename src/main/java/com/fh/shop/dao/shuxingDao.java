@@ -13,7 +13,6 @@ import java.util.Map;
 public interface shuxingDao {
 
     @Select("<script> select count(*) from dianshang_shuxing where isdel = 1" +
-            "<if test = 'name != null and name != &quot;&quot;' > and name = #{name}</if>" +
             " limit #{start},#{size} </script>")
     Integer selectshuxingCount(Params params);
 

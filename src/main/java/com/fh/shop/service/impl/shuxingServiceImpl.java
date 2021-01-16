@@ -20,11 +20,11 @@ public class shuxingServiceImpl implements shuxingService {
     @Override
     public Map selectshuxingAll(Params params) {
         Map map = new HashMap();
-    /*    if(params.getPage() != null){
+        if(params.getPage() != null){
             params.setStart((params.getPage()-1)*params.getSize());
         }else{
             params.setStart((params.getStart()-1)*params.getSize());
-        }*/
+        }
         Integer count = shuxingdao.selectshuxingCount(params);
         List<Shuxing> shuxings = shuxingdao.selectshuxingAll(params);
         map.put("code",200);
