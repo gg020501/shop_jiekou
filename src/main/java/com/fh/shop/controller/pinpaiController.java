@@ -1,19 +1,19 @@
 package com.fh.shop.controller;
 
 import com.fh.shop.entity.po.Pinpai;
-import com.fh.shop.entity.po.Shoptype;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.pinpaiService;
-import com.fh.shop.utils.UploadDown;
-import jdk.nashorn.internal.ir.RuntimeNode;
+import com.fh.shop.utils.OssFileUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -60,12 +60,16 @@ public class pinpaiController {
         return map;
     }
 
-    @PostMapping("insertimgpath")
-    public Map insertimgpath(MultipartFile file){
-        Map<String, String> imsges = UploadDown.upload(file, request, "imsges");
+    @RequestMapping("insertimgpath")
+    public Map insertimgpath(MultipartFile file) throws IOException {
+        String originalFilename = file.getOriginalFilename();
+        String newName = UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf("."));
+        newName = "images/"+newName;
+        String s = OssFileUtils.uploadFile(file.getInputStream(), newName);
+        map.put("data",s);
         map.put("code",200);
         map.put("message","上传成功");
-        return imsges;
+        return map;
     }
 
     @PostMapping("selectpinpaiById")
