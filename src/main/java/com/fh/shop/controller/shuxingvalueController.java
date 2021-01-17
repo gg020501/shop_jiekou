@@ -25,7 +25,41 @@ public class shuxingvalueController {
     public Map selectsxvalue(){
         List<ShuxingValue> lists = shuxingvalueservice.selectsxvalue();
         map.put("data",lists);
+        map.put("code",200);
+        map.put("message","success");
         return map;
     }
+
+    @PostMapping("deletesxvalueById")
+    public Map deletesxvalueById(Integer id){
+        shuxingvalueservice.deletesxvalueById(id);
+        map.put("code",200);
+        map.put("message","success");
+        return map;
+    }
+
+    @PostMapping("insertsxvalue")
+    public Map insertsxvalue(ShuxingValue shuxingValue){
+        if(shuxingValue.getId()!=null){
+            shuxingvalueservice.updatesxvalue(shuxingValue);
+        }else{
+            shuxingvalueservice.insertsxvalue(shuxingValue);
+        }
+        map.put("code",200);
+        map.put("message","success");
+        return map;
+    }
+
+    @PostMapping("seletesxvalueById")
+    public Map seletesxvalueById(Integer id){
+        ShuxingValue shuxingValue = shuxingvalueservice.seletesxvalueById(id);
+        map.put("code",200);
+        map.put("message","success");
+        map.put("data",shuxingValue);
+        return map;
+    }
+
+
+
 
 }

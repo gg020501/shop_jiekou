@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface shuxingvalueService {
     List<ShuxingValue> selectsxvalue();
+
+    void deletesxvalueById(Integer id);
+
+    void insertsxvalue(ShuxingValue shuxingValue);
+
+    ShuxingValue seletesxvalueById(Integer id);
+
+    void updatesxvalue(ShuxingValue shuxingValue);
 }
