@@ -8,4 +8,6 @@ public interface goodsService {
     void insertgoods(Goods goods);
 
     void deletegoodsbyid(Integer id);
+
+    Goods selectgoodsbyid(Integer id);
 }

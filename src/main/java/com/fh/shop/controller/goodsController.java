@@ -41,5 +41,15 @@ public class goodsController {
         return map;
     }
 
+    @PostMapping("selectgoodsbyid")
+    public Map selectgoodsbyid(Integer id){
+        Goods goods = goodsservice.selectgoodsbyid(id);
+        map.put("code",200);
+        map.put("message","success");
+        map.put("data",goods);
+        return map;
+    }
+
+
 
 }
