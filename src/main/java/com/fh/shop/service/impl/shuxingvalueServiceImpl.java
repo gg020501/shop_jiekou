@@ -15,8 +15,8 @@ public class shuxingvalueServiceImpl implements shuxingvalueService {
     private shuxingvalueDao shuxingvaluedao;
 
     @Override
-    public List<ShuxingValue> selectsxvalue() {
-        return shuxingvaluedao.selectsxvalue();
+    public List<ShuxingValue> selectsxvalue(Integer id) {
+        return shuxingvaluedao.selectsxvalue(id);
     }
 
     @Override
@@ -37,6 +37,11 @@ public class shuxingvalueServiceImpl implements shuxingvalueService {
     @Override
     public void updatesxvalue(ShuxingValue shuxingValue) {
         shuxingvaluedao.updatesxvalue(shuxingValue);
+    }
+
+    @Override
+    public List<ShuxingValue> selectsxvalueattid(Integer id) {
+        return shuxingvaluedao.selectsxvalueattid(id);
     }
 
 

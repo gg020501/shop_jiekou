@@ -8,7 +8,7 @@ public class ShuxingValue {
     private String name;
     private String namech;
     private Integer attid;//  属性id
-    private Integer isdel;//  属性id
+    private Integer isdel;
 
 
 

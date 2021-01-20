@@ -5,7 +5,7 @@ import com.fh.shop.entity.po.ShuxingValue;
 import java.util.List;
 
 public interface shuxingvalueService {
-    List<ShuxingValue> selectsxvalue();
+    List<ShuxingValue> selectsxvalue(Integer id);
 
     void deletesxvalueById(Integer id);
 
@@ -14,4 +14,6 @@ public interface shuxingvalueService {
     ShuxingValue seletesxvalueById(Integer id);
 
     void updatesxvalue(ShuxingValue shuxingValue);
+
+    List<ShuxingValue> selectsxvalueattid(Integer id);
 }

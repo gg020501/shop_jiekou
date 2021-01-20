@@ -3,14 +3,12 @@ package com.fh.shop.controller;
 import com.fh.shop.entity.po.Shuxing;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.shuxingService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -66,7 +64,11 @@ public class shuxingController {
         return map;
     }
 
-
+    @GetMapping("selecttypebyid")
+    public List<Shuxing> selecttypebyid(Integer typeid){
+        List<Shuxing> lists = shuxingservice.selecttypebyid(typeid);
+        return lists;
+    }
 
 
 }

@@ -11,7 +11,7 @@ import java.io.InputStream;
 
 public class OssFileUtils {
     // Endpoint以杭州为例，其它Region请按实际情况填写。
-    private static String endpoint = "oss-cn-beijing.aliyuncs.com   ";
+    private static String endpoint = "oss-cn-beijing.aliyuncs.com";
     // 阿里云主账号AccessKey拥有所有API的访问权限，风险很高。强烈建议您创建并使用RAM账号进行API访问或日常运维，请登录RAM控制台创建RAM账号。
     private static   String accessKeyId = "LTAI4G48fATbyiU8aVThxiCk";
 
@@ -42,7 +42,7 @@ public class OssFileUtils {
     public static void main(String[] args) {
 
         try {
-            String s = OssFileUtils.uploadFile(new FileInputStream(new File("F:\\images\\3.jpg")), "imgs/a2aa.jpg");
+            String s = OssFileUtils.uploadFile(new FileInputStream(new File("C:\\Users\\GG\\Pictures\\Saved Pictures\\img\\2020-10-9 134728.gif")), "imgs/a2aa.jpg");
             System.out.println(s);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

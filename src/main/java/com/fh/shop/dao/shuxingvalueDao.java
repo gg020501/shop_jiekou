@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface shuxingvalueDao {
 
-    @Select("select * from dianshang_shuxingvalue where 1 = 1 ")
-    List<ShuxingValue> selectsxvalue();
+    @Select("select * from dianshang_shuxingvalue where isdel = 1 and attid = #{id} ")
+    List<ShuxingValue> selectsxvalue(Integer id);
 
     @Delete("update dianshang_shuxingvalue  set isdel = 2 where id = #{id}")
     void deletesxvalueById(Integer id);
@@ -22,6 +22,9 @@ public interface shuxingvalueDao {
     @Select("select * from dianshang_shuxingvalue where isdel = 1 and id = #{id} ")
     ShuxingValue seletesxvalueById(Integer id);
 
-    @Update("update dianshang_shuxingvalue set name = #{name} ,namech = #{namech} where id = #{id}")
+    @Update("update dianshang_shuxingvalue set name = #{name},namech=#{namech},isdel=#{isdel},attid=#{attid} where id = #{id}")
     void updatesxvalue(ShuxingValue shuxingValue);
+
+    @Select("select * from dianshang_shuxingvalue where attid = #{id} and isdel = 1")
+    List<ShuxingValue> selectsxvalueattid(Integer id);
 }
