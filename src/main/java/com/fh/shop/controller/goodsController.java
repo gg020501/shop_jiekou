@@ -24,12 +24,16 @@ public class goodsController {
 
     @PostMapping("insertgoods")
     public Map insertgoods(Goods goods){
-        goods.setCreateate(new Date());
         goods.setUpdatedate(new Date());
-        goodsservice.insertgoods(goods);
+        if(goods.getId() != null ){
+            goodsservice.updategoods(goods);
+        }else{
+            goods.setCreateate(new Date());
+            goodsservice.insertgoods(goods);
+            map.put("Id",goods.getId());
+        }
         map.put("code",200);
         map.put("message","success");
-        map.put("Id",goods.getId());
         return map;
     }
 
@@ -48,6 +52,12 @@ public class goodsController {
         map.put("message","success");
         map.put("data",goods);
         return map;
+    }
+
+    @PostMapping("insertattrssku")
+    public Map insertattrssku(Goods goods,String attrs,String sku){
+        Map insertattrssku = goodsservice.insertattrssku(goods, attrs, sku);
+        return insertattrssku;
     }
 
 
