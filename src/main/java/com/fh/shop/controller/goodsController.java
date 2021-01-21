@@ -4,10 +4,7 @@ import com.fh.shop.entity.po.Goods;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -28,17 +25,19 @@ public class goodsController {
         goods.setUpdatedate(new Date());
         if(goods.getId() != null ){
             goodsservice.updategoods(goods);
+            map.put("code",200);
+            map.put("message","success");
         }else{
             goods.setCreateate(new Date());
             goodsservice.insertgoods(goods);
             map.put("Id",goods.getId());
+            map.put("code",200);
+            map.put("message","success");
         }
-        map.put("code",200);
-        map.put("message","success");
         return map;
     }
 
-    @PostMapping("deletegoodsbyid")
+    @GetMapping("deletegoodsbyid")
     public Map deletegoodsbyid(Integer id){
         goodsservice.deletegoodsbyid(id);
         map.put("code",200);

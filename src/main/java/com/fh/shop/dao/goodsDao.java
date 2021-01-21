@@ -29,7 +29,7 @@ public interface goodsDao {
     void insertgoodslist(List<productAttrDatas> list);
 
     @Select("<script>select * from dianshang_goods where isdel=1  " +
-            "<if test='name != null and name !=&quot;&quot;'> name = #{name} </if>" +
+            "<if test='name != null and name !=&quot;&quot;'> and name = #{name} </if>" +
             " order by sortnum desc limit #{start} , #{size} </script>")
     List<Goods> selectgoodsj(Params params);
 
