@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fh.shop.dao.goodsDao;
 import com.fh.shop.entity.po.Goods;
 import com.fh.shop.entity.po.productAttrDatas;
+import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
 import org.springframework.stereotype.Service;
 
@@ -72,5 +73,10 @@ public class goodsServiceImpl implements goodsService {
         map.put("code",200);
         map.put("message","success");
         return map;
+    }
+
+    @Override
+    public Map selectgoodsj(Params params) {
+        return dao.selectgoodsj(params);
     }
 }

@@ -2,9 +2,11 @@ package com.fh.shop.dao;
 
 import com.fh.shop.entity.po.Goods;
 import com.fh.shop.entity.po.productAttrDatas;
+import com.fh.shop.entity.vo.Params;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface goodsDao {
     @Insert("insert into dianshang_goods (name,title,bandid,typeid,productdecs,price,imgpath,stocks,sortnum,createdate,updatedate,author,isdel)" +
@@ -25,4 +27,9 @@ public interface goodsDao {
             "<foreach collection='list' item='a' separator=','> (#{a.proid},#{a.attrdata},#{a.storcks},#{a.price})" +
             "</foreach> </script>")
     void insertgoodslist(List<productAttrDatas> list);
+
+    @Select("<script>select * from dianshang_goods where isdel=1  " +
+            "<if test='name != null and name != &quot;&quot;' > name = #{name} </if>" +
+            " limit #{size * (start-1)} , #{size} </script>")
+    Map selectgoodsj(Params params);
 }

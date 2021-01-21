@@ -1,6 +1,7 @@
 package com.fh.shop.controller;
 
 import com.fh.shop.entity.po.Goods;
+import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -60,6 +61,10 @@ public class goodsController {
         return insertattrssku;
     }
 
-
+    @PostMapping("selectgoodsj")
+    public Map selectgoodsj(Params params){
+        Map map1 =  goodsservice.selectgoodsj(params);
+        return map1;
+    }
 
 }
