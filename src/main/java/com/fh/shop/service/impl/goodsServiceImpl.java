@@ -8,6 +8,7 @@ import com.fh.shop.entity.po.Goods;
 import com.fh.shop.entity.po.productAttrDatas;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -77,6 +78,12 @@ public class goodsServiceImpl implements goodsService {
 
     @Override
     public Map selectgoodsj(Params params) {
-        return dao.selectgoodsj(params);
+        Map map = new HashMap();
+        params.setStart((params.getStart()-1)*params.getSize());
+        Integer count =  dao.selectgoodsjcount(params);
+        List<Goods> selectgoodsj = dao.selectgoodsj(params);
+        map.put("data",selectgoodsj);
+        map.put("count",count);
+        return map;
     }
 }
