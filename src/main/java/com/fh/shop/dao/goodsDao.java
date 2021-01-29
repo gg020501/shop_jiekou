@@ -1,6 +1,7 @@
 package com.fh.shop.dao;
 
 import com.fh.shop.entity.po.Goods;
+import com.fh.shop.entity.po.Shuxing;
 import com.fh.shop.entity.po.productAttrDatas;
 import com.fh.shop.entity.vo.Params;
 import org.apache.ibatis.annotations.*;
@@ -30,9 +31,15 @@ public interface goodsDao {
 
     @Select("<script>select * from dianshang_goods where isdel=1  " +
             "<if test='name != null and name !=&quot;&quot;'> and name = #{name} </if>" +
-            " order by sortnum desc limit #{start} , #{size} </script>")
+            " order by id desc limit #{start} , #{size} </script>")
     List<Goods> selectgoodsj(Params params);
 
     @Select("select count(*) from dianshang_goods where isdel = 1")
     Integer selectgoodsjcount(Params params);
+
+    @Select("select * from dianshang_productdttrdatas where proid = #{id}")
+    List<productAttrDatas> selectproductproid(Integer id);
+
+    @Select("select * from dianshang_shuxing where isdel = 1 and typeid = #{typeid}")
+    List<Shuxing> queryDataByTypeId(Integer typeid);
 }

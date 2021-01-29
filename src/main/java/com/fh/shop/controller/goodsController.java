@@ -1,6 +1,7 @@
 package com.fh.shop.controller;
 
 import com.fh.shop.entity.po.Goods;
+import com.fh.shop.entity.po.productAttrDatas;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin
@@ -63,6 +65,21 @@ public class goodsController {
     @PostMapping("selectgoodsj")
     public Map selectgoodsj(Params params){
         Map map1 =  goodsservice.selectgoodsj(params);
+        return map1;
+    }
+
+    @GetMapping("selectproductproid")
+    public Map selectproductproid(Integer id){
+        List<productAttrDatas> lists = goodsservice.selectproductproid(id);
+        map.put("code",200);
+        map.put("message","success");
+        map.put("data",lists);
+        return map;
+    }
+
+    @GetMapping("queryAttrDataByTypeId")
+    public Map queryAttrDataByTypeId(Integer typeid){
+        Map map1 = goodsservice.queryAttrDataByTypeId(typeid);
         return map1;
     }
 

@@ -4,7 +4,10 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.fh.shop.dao.goodsDao;
+import com.fh.shop.dao.shuxingvalueDao;
 import com.fh.shop.entity.po.Goods;
+import com.fh.shop.entity.po.Shuxing;
+import com.fh.shop.entity.po.ShuxingValue;
 import com.fh.shop.entity.po.productAttrDatas;
 import com.fh.shop.entity.vo.Params;
 import com.fh.shop.service.goodsService;
@@ -20,6 +23,9 @@ public class goodsServiceImpl implements goodsService {
 
     @Resource
     private goodsDao dao;
+
+    @Resource
+    private shuxingvalueDao shuxingvaluedao;
 
     @Override
     public void insertgoods(Goods goods) {
@@ -84,6 +90,38 @@ public class goodsServiceImpl implements goodsService {
         List<Goods> selectgoodsj = dao.selectgoodsj(params);
         map.put("data",selectgoodsj);
         map.put("count",count);
+        return map;
+    }
+
+    @Override
+    public List<productAttrDatas> selectproductproid(Integer id) {
+        return dao.selectproductproid(id);
+    }
+
+    @Override
+    public Map queryAttrDataByTypeId(Integer typeid) {
+        Map map = new HashMap();
+        List<Shuxing> lists = dao.queryDataByTypeId(typeid);
+        List<Shuxing> sxData = new ArrayList<>();
+        List<Shuxing> skuData = new ArrayList<>();
+        for (int i = 0; i <lists.size() ; i++) {
+            Shuxing shuxing = lists.get(i);
+            if(shuxing.getIssku() == 0){
+                if(shuxing.getType() != 3){
+                    List<ShuxingValue> selectsxvalueattid = shuxingvaluedao.selectsxvalueattid(shuxing.getId());
+                    shuxing.setValues(selectsxvalueattid);
+                }
+                sxData.add(shuxing);
+            }else{
+                if(shuxing.getType() != 3){
+                    List<ShuxingValue> selectsxvalueattid2 = shuxingvaluedao.selectsxvalueattid(shuxing.getId());
+                    shuxing.setValues(selectsxvalueattid2);
+                }
+                skuData.add(shuxing);
+            }
+        }
+        map.put("sxData",sxData);
+        map.put("skuData",skuData);
         return map;
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.data.relational.core.sql.In;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 public class Shuxing {
     private  Integer id;//    主键
@@ -23,7 +24,16 @@ public class Shuxing {
     private String author;// 操作人
 
 
+    //业务需要
+    private List<ShuxingValue> values;
 
+    public List<ShuxingValue> getValues() {
+        return values;
+    }
+
+    public void setValues(List<ShuxingValue> values) {
+        this.values = values;
+    }
 
     public Integer getId() {
         return id;

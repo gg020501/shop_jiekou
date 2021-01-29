@@ -15,7 +15,7 @@ public interface shoptypeDao {
     @Select("select * from shop_type where pid = #{pid}")
     List<Shoptype> selectstypeByPid(Integer pid);
 
-    @Insert("insert into shop_type (name,pid,createdate,isdel,operate) values (#{name},#{pid},#{createdate},#{1},#{operate})")
+    @Insert("insert into shop_type (name,pid,createdate,isdel,operate) values (#{name},#{pid},#{createdate},1,#{operate})")
     @Options(useGeneratedKeys = true , keyProperty = "id" , keyColumn = "id")
     void selectstypeInsert(Shoptype shoptype);
 
