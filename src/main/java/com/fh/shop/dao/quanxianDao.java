@@ -15,7 +15,7 @@ public interface quanxianDao {
     void updateQx(Quanxian quanxian);
     @Insert("insert into dianshang_quanxian (pid,name,url,type,isdel,createdate,author)value(#{pid},#{name},#{url},#{type},1,#{createdate},#{author})")
     void insertQx(Quanxian quanxian);
-    @Delete("update dianshang_quanxian set isdel = 2 where id= #{id}")
+    @Update("update dianshang_quanxian set isdel = 2 where id= #{id}")
     void deleteQx(Integer id);
 
     @Select("select * from dianshang_quanxian where isdel = 1")
